@@ -1,0 +1,120 @@
+/*
+	Using BEM (Block, element, modifier) methodology
+
+	TODO:
+		use cssnext and other postcss modules
+*/
+
+.ApiExplorer__welcome, .ApiExplorer__error {
+	position: absolute;
+	font-size: 2rem;
+	top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ApiExplorer__loader {
+	position: absolute;
+	text-align: justify;
+	font-size: 1.5rem;
+	top: 50vh;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: #4bd5ee;
+	background-color: #000;
+    width: 80%;
+    height: 90px;
+    padding: 10px;
+}
+
+.ApiExplorer__error {
+	color: red;
+	text-align: center;
+	line-height: 2rem;
+}
+
+.ApiExplorer__button {
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: .9rem;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	touch-action: manipulation;
+	cursor: pointer;
+	user-select: none;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	text-decoration: none;
+}
+
+.ApiExplorer__button--default {
+	color: #333;
+	background-color: #fff;
+	border-color: #ccc;
+}
+
+.ApiExplorer__button--default:hover {
+	color: #333;
+	background-color: #e6e6e6;
+	border-color: #adadad;
+}
+
+.ApiExplorer__button--disabled {
+	cursor: not-allowed;
+	filter: alpha(opacity=65);
+	box-shadow: none;
+	opacity: .65;
+}
+
+.ApiExplorer__button--disabled:hover {
+	/*
+		pointer-events:none; And cursor: *; dont work well together...
+		this style resets the hover to the original default state.
+		If I need more states, I will have to refactor this.
+	 */
+	color: #333;
+	background-color: #fff;
+	border-color: #ccc;
+}
+
+.ApiExplorer__button--pagination {
+	margin-left: 5px;
+}
+
+.ApiExplorer__actions-wrapper:after, .ApiExplorer__list-control:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.ApiExplorer__list-control {
+	text-align: center;
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+  .ApiExplorer__loader {
+    width: 50%;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+  .ApiExplorer__loader {
+    width: 40%;
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+  .ApiExplorer__loader {
+    width: 30%;
+  }
+}

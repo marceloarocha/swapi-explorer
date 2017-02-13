@@ -1,0 +1,14 @@
+
+.ApiExplorerItem {
+	flex-basis: 100%;
+	text-align: left;
+	transition: color 200ms ease-in;
+}
+
+.ApiExplorerItem--top-value {
+	color: green;
+}
+
+.ApiExplorerItem--not-top-value {
+	color: red;
+}
