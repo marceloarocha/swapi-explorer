@@ -11,15 +11,6 @@ import Velocity from 'velocity-animate';
 import { VelocityComponent } from 'velocity-react';
 import './ApiExplorer.css';
 
-/*
-	testar layout mobile
-	permitir controlar as animacoes de fora do componente
-	callback para tratar alguns campos especificos de forma diferente?
-	internacionalizacao
-	testes
-	export apiexplorer as a separated component
-*/
-
 class ApiExplorer extends Component {
 
 	constructor(props) {
