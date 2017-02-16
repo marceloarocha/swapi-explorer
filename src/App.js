@@ -15,7 +15,7 @@ class App extends Component {
 		return (
         	<div className="App">
 	          	<div className="App__list">
-	            	<ApiExplorer url="http://swapi.co/api/" loader={loader} />
+	            	<ApiExplorer url="/api/" loader={loader} />
 	          	</div>
         	</div>
     	);
