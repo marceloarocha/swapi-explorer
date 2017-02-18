@@ -75,7 +75,8 @@ class ApiExplorer extends Component {
 		}
 
 		this.setState({
-			error: msg
+			error: msg,
+			loading: false
 		});
 	}
 
@@ -125,10 +126,11 @@ class ApiExplorer extends Component {
 	}
 
 	navigate(url) {
-		window.history.pushState(null, null, '/' + url.replace(this.baseAPI, ''));
+		window.history.pushState(null, null, url.replace(this.props.proxy, ''));
+		const internalUrl = '/api' + url.replace(this.props.proxy, '');
 
 		this.setState({
-			url: url
+			url: internalUrl
 		});
 		
 		Velocity(this.refs.rootElm, 'scroll', {
@@ -146,9 +148,10 @@ class ApiExplorer extends Component {
 	}
 
 	apiUrl(search = null) {
-		const url = this.baseAPI.replace(/\/$/, '') + window.location.pathname;
+		const url = this.props.proxy.replace(/\/$/, '') + window.location.pathname;
 
 		if (search) {
+			console.log(url);
 			return url + '?search=' + search;
 		}
 

@@ -6,7 +6,7 @@ class App extends Component {
 
 	render() {
 		const loader = <span>
-			Loading SW-API from a galaxy far, far away
+			Loading SWAPI from a galaxy far, far away
 			<span className="loader__dot">.</span>
 			<span className="loader__dot">.</span>
 			<span className="loader__dot">.</span>
@@ -15,7 +15,7 @@ class App extends Component {
 		return (
         	<div className="App">
 	          	<div className="App__list">
-	            	<ApiExplorer url="/api" loader={loader} />
+	            	<ApiExplorer url="/api/" proxy="http://swapi.co/api" loader={loader} />
 	          	</div>
         	</div>
     	);
