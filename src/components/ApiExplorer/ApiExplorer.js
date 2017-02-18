@@ -15,7 +15,7 @@ class ApiExplorer extends Component {
 
 	constructor(props) {
 		super(props);
-		this.baseAPI = props.url;
+
 		this.state = {
 			navigatorData: [],
 			contentData: [],
@@ -28,7 +28,7 @@ class ApiExplorer extends Component {
 	componentDidMount() {
 		this.requestNavigatorData();
 
-		if (this.state.url !== this.baseAPI) {
+		if (this.state.url !== this.props.proxy) {
 			this.requestData();
 		}
 
@@ -44,7 +44,7 @@ class ApiExplorer extends Component {
 	}
 
 	requestNavigatorData() {
-		fetch(this.baseAPI)
+		fetch(this.props.url)
 			.then(this.handleRequestError)
 			.then((response) => {
 				return response.json();
@@ -94,7 +94,7 @@ class ApiExplorer extends Component {
 			initContent: true
 		});
 
-		fetch(this.state.url)
+		fetch(this.getInternalUrl(this.state.url))
 			.then(this.handleRequestError)
 			.then((response) => {
 				return response.json();
@@ -125,15 +125,18 @@ class ApiExplorer extends Component {
 		  	
 	}
 
+	getInternalUrl(url) {
+		return '/api/' + url.replace(this.props.proxy, '');
+	}
+
 	navigate(url) {
-		window.history.pushState(null, null, url.replace(this.props.proxy, ''));
-		const internalUrl = '/api' + url.replace(this.props.proxy, '');
+		window.history.pushState(null, null, '/' + url.replace(this.props.proxy, ''));
 
 		this.setState({
-			url: internalUrl
+			url: url
 		});
-		
-		Velocity(this.refs.rootElm, 'scroll', {
+
+		Velocity(this.refs.rootElm || window.document.body, 'scroll', {
             duration: 500,
             offset: -60,
             easing: 'ease-in-out'
@@ -151,7 +154,6 @@ class ApiExplorer extends Component {
 		const url = this.props.proxy.replace(/\/$/, '') + window.location.pathname;
 
 		if (search) {
-			console.log(url);
 			return url + '?search=' + search;
 		}
 
