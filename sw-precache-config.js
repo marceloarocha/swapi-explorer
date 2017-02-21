@@ -7,7 +7,7 @@ module.exports = {
   ],
   dontCacheBustUrlsMatching: /\.\w{8}\./,
   runtimeCaching: [{
-	urlPattern: /^http:\/\/swapi\.co\/api/,
+	urlPattern: /\/api/,
    	handler: 'networkFirst'
   }],
   swFilePath: 'build/service-worker.js'
